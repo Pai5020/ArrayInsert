@@ -1,23 +1,29 @@
 
 public class InsertIntoArray {
 
-    public int[] insertElement(int[] arr, int element, int pos) throws IllegalArgumentException {
-
-        if (pos < 0 || pos > arr.length) {
-            throw new IllegalArgumentException("Invalid position to insert.");
-        }
-
-        int[] newArr = new int[arr.length + 1];
-
-
-            for (int i = 0, j = 0; i < newArr.length; i++) {
-                if (i == pos) {
-                    newArr[i] = element;
-                } else {
-                    newArr[i] = arr[j++];
+    public void bubbleSort (int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
+        }
+    }
 
-        return newArr;
+    public void insertElement(int[] arr, int element, int pos) throws IllegalArgumentException {
+
+        if (pos < 0 || pos > arr.length) {
+            throw new IllegalArgumentException("Invalid position to insert..");
+        }
+
+        for (int i = arr.length-1; i > pos-1; i--) {
+            arr[i] = arr[i-1];
+            }
+        arr[pos]= element;
+
     }
 }
